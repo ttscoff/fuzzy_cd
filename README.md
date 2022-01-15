@@ -10,7 +10,13 @@ To make use of the jump marks, you'll want to install [this particular jump plug
 
 ## Installation
 
+Install with [fisher](https://github.com/jorgebucaran/fisher):
+
 	fisher install ttscoff/fuzzy_cd
+
+You can remove the plugin and restore `cd` to its built-in status using:
+
+	fisher remove ttscoff/fuzzy_cd
 
 ## Usage
 
