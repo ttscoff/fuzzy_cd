@@ -26,4 +26,6 @@ If the first argument is a jump bookmark, that will be used as the base director
 
 Any additional arguments will be used to fuzzy search subdirectories in sequence. So `cd desk pod ov 8` would locate `~/Desktop/Podcasts/Overtired/268` and cd to it.
 
+If the first argument is 3 or more dots, `cd` will navigate up the directory tree, allowing fuzzy directory searching from the base folder with additional arguments. 1 dot is the current directory, 2 dots is the next level up, each additional dot is one level further up. 3 dots is equivalent to `../..`, 4 dots is `../../..`, etc.
+
 If no valid path is found using this method, `cd` will fall back to using fasd to search recent directories.
