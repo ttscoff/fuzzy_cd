@@ -22,7 +22,23 @@ function __fuzzy_cd -d "fuzzy cd with jump bookmarks"
 			end
 		end
 
-		if $try_mark
+		if test (string match --regex '\.{3,}' $first_token)
+			set -l count (math (string length $first_token) - 1)
+			set base '.'
+			while test $count -gt 0
+				set base "$base/.."
+				set count (math $count - 1)
+			end
+
+			set -e token[1]
+
+			if test (count $token) -eq 0
+				__fuzzy_wrapped_cd $base
+				return 0
+			end
+
+			set res (fcd_ffdir -i -d2 --multi --shortest $base $token)
+		else if $try_mark
 			# See if first position is a match for a jump bookmark
 			set -l base (fcd_ffmark $first_token)
 			if test -n "$base"
