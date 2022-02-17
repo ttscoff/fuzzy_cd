@@ -83,6 +83,8 @@ function fcd_ffdir -d "fuzzy find a directory, pass root dir and sequential sear
 				end
 				set found (echo "$found" | sed -e 's/^\.\///')
 				set new_path $found
+			else
+				set -e new_path
 			end
 		end
 	end

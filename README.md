@@ -10,13 +10,28 @@ To make use of the jump marks, you'll want to install [this particular jump plug
 
 ## Installation
 
+### Fisher
+
 Install with [fisher](https://github.com/jorgebucaran/fisher):
 
-	fisher install ttscoff/fuzzy_cd
+```fish
+fisher install ttscoff/fuzzy_cd
+```
 
 You can remove the plugin and restore `cd` to its built-in status using:
 
-	fisher remove ttscoff/fuzzy_cd
+```fish
+fisher remove ttscoff/fuzzy_cd
+```
+
+### Oh-my-fish
+
+```fish
+$ omf repositories add https://github.com/ttscoff/omf-packages
+$ omf install fuzzy_cd
+```
+
+You can remove the plugin using `omf uninstall fuzzy_cd`. Exit your shell and open a new one to restore `cd` to it's built-in status.
 
 ## Usage
 

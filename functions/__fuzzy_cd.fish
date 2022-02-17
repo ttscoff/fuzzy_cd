@@ -76,6 +76,8 @@ function __fuzzy_cd -d "fuzzy cd with jump bookmarks"
 		else
 			if not $try_mark
 				__fuzzy_cd_chdir $token
+			else
+				fcd_warn "No match found"
 			end
 		end
 	end
