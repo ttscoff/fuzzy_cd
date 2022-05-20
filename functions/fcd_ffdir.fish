@@ -33,7 +33,7 @@ function fcd_ffdir -d "fuzzy find a directory, pass root dir and sequential sear
 		set -l regex (fcd_dir_regex $args)
 		# start by looking for directories starting with first char of search
 		# string, ignoring dot directories
-		set -l results (find -E -s "$new_path" -$case_sensitive ".*/[^.]*$regex.*" -type d -maxdepth $max_depth -mindepth 1 2> /dev/null)
+		set -l results (find -EL -s "$new_path" -$case_sensitive ".*/[^.]*$regex.*" -type d -maxdepth $max_depth -mindepth 1 2> /dev/null)
 		# choose shortest result
 		if set -q _flag_menu
 			set found (echo -e (string join "\n" $results) | fzf -1 -0)
@@ -60,7 +60,7 @@ function fcd_ffdir -d "fuzzy find a directory, pass root dir and sequential sear
 			set found (echo -n "$found" | sed -e 's/^\.\///')
 			set new_path $found
 		else # if not, try again without the first char/dot requirement
-			set results (find -E -s "$new_path" -$case_sensitive ".*$regex.*" -type d -maxdepth $max_depth -mindepth 1 2> /dev/null)
+			set results (find -EL -s "$new_path" -$case_sensitive ".*$regex.*" -type d -maxdepth $max_depth -mindepth 1 2> /dev/null)
 			if set -q _flag_shortest
 				set results (fcd_shortest_common $results)
 			end
